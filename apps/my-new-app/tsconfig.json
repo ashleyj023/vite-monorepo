@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "types": ["vitest"],
+    "baseUrl": ".",
+    "paths": {
+      "@repo/ui": ["../../packages/ui/src"]
+    },
     "jsx": "react-jsx",
     "module": "ESNext",
     "target": "ESNext",
@@ -9,7 +12,7 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src", "vitest.setup.ts"]
+  "include": ["src"]
 }
 
 
