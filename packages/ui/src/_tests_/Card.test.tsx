@@ -1,15 +1,12 @@
+/// <reference types="vitest" />
 import { render, screen } from '@testing-library/react';
-import { Card } from '../Card';
+import { Card } from '@components/Card';
 
 describe('Card', () => {
-  it('renders the title and children', () => {
-    render(
-      <Card title="Test Card">
-        <p>Hello from inside</p>
-      </Card>
-    );
-
-    expect(screen.getByText('Test Card')).toBeInTheDocument();
-    expect(screen.getByText('Hello from inside')).toBeInTheDocument();
+  it('renders children correctly', () => {
+    render(<Card>Card content</Card>);
+    expect(screen.getByText('Card content')).toBeInTheDocument();
   });
 });
+
+

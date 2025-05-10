@@ -1,15 +1,19 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["vitest"],
     "jsx": "react-jsx",
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "bundler",
-    "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"]
+    },
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src", "vitest.setup.ts"]
+  "include": ["src", "src/_tests_"]
 }
+
+
+
+
+
 
 
