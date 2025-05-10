@@ -1,16 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "types": ["redux-thunk", "react-redux"],
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@reduxjs/toolkit": ["../../node_modules/@reduxjs/toolkit"]
     },
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src", "src/_tests_"]
 }
-
 
 
 
