@@ -1,4 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { store } from '../../../../apps/vite-dashboard/src/store'; // Adjust store path as needed
 import { SelectDropdown } from '../components/SelectDropdown';
 import { vi } from 'vitest';
 import React from 'react';
@@ -10,12 +12,14 @@ describe('SelectDropdown', () => {
   it('renders label and options', () => {
     const handleChange = vi.fn();
     render(
-      <SelectDropdown
-        label={label}
-        options={options}
-        value="Apple"
-        onChange={handleChange}
-      />
+      <Provider store={store}>
+        <SelectDropdown
+          label={label}
+          options={options}
+          value="Apple"
+          onChange={handleChange}
+        />
+      </Provider>
     );
 
     // Use getByRole('combobox') instead of getByLabelText
@@ -27,12 +31,14 @@ describe('SelectDropdown', () => {
   it('calls onChange when an option is selected', () => {
     const handleChange = vi.fn();
     render(
-      <SelectDropdown
-        label={label}
-        options={options}
-        value="Apple"
-        onChange={handleChange}
-      />
+      <Provider store={store}>
+        <SelectDropdown
+          label={label}
+          options={options}
+          value="Apple"
+          onChange={handleChange}
+        />
+      </Provider>
     );
 
     const comboBox = screen.getByRole('combobox');
@@ -42,6 +48,7 @@ describe('SelectDropdown', () => {
     expect(handleChange).toHaveBeenCalled();
   });
 });
+
 
 
 

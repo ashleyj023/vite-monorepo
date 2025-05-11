@@ -1,11 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import uiReducer, {
-  toggleDarkMode,
-  toggleSidebar,
-  setSidebarOpen
-} from "../slices/uiSlice";
+/// <reference types="jest" />
 
-// Mock localStorage
+import { configureStore } from "@reduxjs/toolkit";
+import uiReducer, { toggleDarkMode, toggleSidebar, setSidebarOpen } from "../../../../apps/vite-dashboard/src/slices/uiSlice";
+
+
 beforeEach(() => {
   localStorage.clear();
   jest.restoreAllMocks();
@@ -17,7 +15,7 @@ describe("uiSlice", () => {
     const state = store.getState().ui;
     expect(state).toEqual({
       darkMode: false,
-      sidebarOpen: true
+      sidebarOpen: true,
     });
   });
 
@@ -51,3 +49,4 @@ describe("uiSlice", () => {
     expect(store.getState().ui.sidebarOpen).toBe(true);
   });
 });
+
