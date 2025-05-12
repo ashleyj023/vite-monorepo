@@ -17,21 +17,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Set up Node.js v18.12 (or higher)
+      # Set up Node.js v18.12 or higher
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.12'  # Specify Node.js v18.12 or higher
+          node-version: '18.12'
 
       # Install pnpm
       - name: Install pnpm
         run: |
           npm install -g pnpm  # Install pnpm globally
 
-      # Install dependencies using pnpm
-      - name: Install dependencies
+      # Install dependencies for ui and vite-dashboard
+      - name: Install dependencies for packages/ui
         run: |
-          pnpm install  # This uses pnpm to install dependencies
+          cd packages/ui
+          pnpm install  # Install dependencies for the ui package
+
+      - name: Install dependencies for apps/vite-dashboard
+        run: |
+          cd apps/vite-dashboard
+          pnpm install  # Install dependencies for the vite-dashboard app
+
+      # Install dependencies for the root monorepo
+      - name: Install root dependencies
+        run: |
+          pnpm install  # Install dependencies for the monorepo (if any)
 
       # Run tests
       - name: Run tests
@@ -42,6 +53,7 @@ jobs:
       - name: Build project
         run: |
           pnpm run build  # Build the project using pnpm
+
 
 
 
