@@ -28,6 +28,15 @@ jobs:
         run: |
           npm install -g pnpm  # Install pnpm globally
 
+      # Cache pnpm dependencies (optional but recommended for speed)
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       # Install dependencies for ui and vite-dashboard
       - name: Install dependencies for packages/ui
         run: |
@@ -39,20 +48,28 @@ jobs:
           cd apps/vite-dashboard
           pnpm install  # Install dependencies for the vite-dashboard app
 
-      # Install dependencies for the root monorepo
+      # Install dependencies for the root monorepo (if needed)
       - name: Install root dependencies
         run: |
           pnpm install  # Install dependencies for the monorepo (if any)
 
-      # Run tests
-      - name: Run tests
+      # Run tests for the ui package
+      - name: Run tests for packages/ui
         run: |
-          pnpm run test  # Run tests using pnpm
+          cd packages/ui
+          pnpm run test  # Run tests specifically for ui
+
+      # Run tests for the vite-dashboard app (if needed)
+      - name: Run tests for apps/vite-dashboard
+        run: |
+          cd apps/vite-dashboard
+          pnpm run test  # Run tests specifically for vite-dashboard
 
       # Build the project
       - name: Build project
         run: |
           pnpm run build  # Build the project using pnpm
+
 
 
 
