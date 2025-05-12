@@ -1,8 +1,6 @@
 /// <reference types="jest" />
-
 import { configureStore } from "@reduxjs/toolkit";
 import uiReducer, { toggleDarkMode, toggleSidebar, setSidebarOpen } from "../../../../apps/vite-dashboard/src/slices/uiSlice";
-
 
 beforeEach(() => {
   localStorage.clear();
