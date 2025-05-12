@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "types": ["@mui/material", "@mui/styles", "react"],
     "paths": {
       "@repo/ui": ["../../packages/ui/src"]
     },

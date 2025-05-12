@@ -1,21 +1,16 @@
-import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react()],
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
+      '@components': path.resolve(__dirname, '../../apps/my-new-app/src/components'),
+      '@store': path.resolve(__dirname, '../../apps/vite-dashboard/src/store'),
+      '@slices': path.resolve(__dirname, '../../apps/vite-dashboard/src/slices'),
     },
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/setupTests.ts'],
-    include: ['src/_tests_/**/*.test.tsx'],
-  },
 });
+
 
 
 
